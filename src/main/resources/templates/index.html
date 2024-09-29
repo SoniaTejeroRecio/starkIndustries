@@ -1,10 +1,31 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html>
 <head>
-  <title>Página de inicio</title>
+  <title>Notificaciones</title>
 </head>
 <body>
-<h1>Bienvenido a la página de inicio</h1>
-<a href="/login">Iniciar sesión</a>
+<h1>Alertas en tiempo real</h1>
+<div id="alertas"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/sockjs-client/dist/sockjs.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+<script>
+  var socket = new SockJS('/ws');
+  var stompClient = Stomp.over(socket);
+
+  stompClient.connect({}, function (frame) {
+    console.log('Conectado: ' + frame);
+    stompClient.subscribe('/topic/alertas', function (mensaje) {
+      mostrarAlerta(mensaje.body);
+    });
+  });
+
+  function mostrarAlerta(mensaje) {
+    var alertasDiv = document.getElementById('alertas');
+    var p = document.createElement('p');
+    p.appendChild(document.createTextNode(mensaje));
+    alertasDiv.appendChild(p);
+  }
+</script>
 </body>
 </html>

@@ -1,4 +1,4 @@
 package seguridad;
 
-public class servicios {
+public class Servicios {
 }
