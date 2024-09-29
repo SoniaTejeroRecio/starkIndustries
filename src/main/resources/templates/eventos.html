@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Eventos por Tipo de Sensor</title>
+</head>
+<body>
+<h2>Eventos Procesados por Tipo de Sensor</h2>
+
+<table border="1">
+  <thead>
+  <tr>
+    <th>Tipo de Sensor</th>
+    <th>Cantidad de Eventos</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="evento : ${eventos}">
+    <td th:text="${evento.tipo}"></td>
+    <td th:text="${evento.cantidad}"></td>
+  </tr>
+  </tbody>
+</table>
+
+</body>
+</html>

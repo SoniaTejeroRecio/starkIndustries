@@ -1,4 +1,4 @@
-package seguridad;
+/* package seguridad;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,3 +16,5 @@ public class AlertaController {
         return "Alerta enviada por correo electrónico.";
     }
 }
+
+ */

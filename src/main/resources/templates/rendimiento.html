@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Rendimiento del Sistema en Tiempo Real</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<h2>Gráfico de Rendimiento del Sistema en Tiempo Real</h2>
+
+<canvas id="rendimientoChart" width="400" height="200"></canvas>
+
+<script>
+    var ctx = document.getElementById('rendimientoChart').getContext('2d');
+    var rendimientoChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: [], // Se puede llenar dinámicamente con el tiempo
+            datasets: [{
+                label: 'Uso de CPU (%)',
+                data: [], // Llenar con los valores en tiempo real
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1,
+                fill: false
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    // Simulación de actualización en tiempo real
+    setInterval(function() {
+        var randomValue = Math.floor(Math.random() * 100);
+        rendimientoChart.data.labels.push(new Date().toLocaleTimeString());
+        rendimientoChart.data.datasets[0].data.push(randomValue);
+        rendimientoChart.update();
+    }, 2000); // Actualiza cada 2 segundos
+
+</script>
+</body>
+</html>
