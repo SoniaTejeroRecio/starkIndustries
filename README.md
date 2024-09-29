@@ -1,9 +1,8 @@
 # Proyecto starkIndustries_SoniaTejeroRecio
 
 ## Comenzamos 🚀
-
-
-
+entrar en: 
+http://localhost:8080/login
 
 # ¿Cómo he estructurado el proyecto?💡
 
